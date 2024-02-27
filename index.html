@@ -1,0 +1,280 @@
+<html>
+
+    <body>
+  <style type="text/css">
+    body{
+        color: black;
+    }
+
+
+    #src{
+        animation: text-animation 2s ease-in-out infinite;
+    }
+
+    ul{
+        animation: text-animation 2s ease-in-out infinite;
+    }
+
+    #result{
+        animation: text-animation 2s ease-in-out infinite;
+    }
+    
+
+    @keyframes text-animation {
+
+0.00%{
+transform: translateY(0px);
+}
+
+2.08%{
+transform: translateY(2.34px);
+}
+
+4.17%{
+transform: translateY(4.68px);
+}
+
+6.25%{
+transform: translateY(7.02px);
+}
+
+8.33%{
+transform: translateY(9.36px);
+}
+
+10.42%{
+transform: translateY(11.7px);
+}
+
+12.50%{
+transform: translateY(14.04px);
+}
+
+14.58%{
+transform: translateY(16.38px);
+}
+
+16.67%{
+transform: translateY(18.72px);
+}
+
+18.75%{
+transform: translateY(21.06px);
+}
+
+20.83%{
+transform: translateY(23.4px);
+}
+
+22.92%{
+transform: translateY(25.74px);
+}
+
+25.00%{
+transform: translateY(28.08px);
+}
+
+27.08%{
+transform: translateY(30.419999999999998px);
+}
+
+29.17%{
+transform: translateY(32.76px);
+}
+
+31.25%{
+transform: translateY(35.099999999999994px);
+}
+
+33.33%{
+transform: translateY(37.44px);
+}
+
+35.42%{
+transform: translateY(39.78px);
+}
+
+37.50%{
+transform: translateY(42.12px);
+}
+
+39.58%{
+transform: translateY(44.459999999999994px);
+}
+
+41.67%{
+transform: translateY(46.8px);
+}
+
+43.75%{
+transform: translateY(49.14px);
+}
+
+45.83%{
+transform: translateY(51.48px);
+}
+
+47.92%{
+transform: translateY(53.81999999999999px);
+}
+
+50.00%{
+transform: translateY(56.16px);
+}
+
+52.08%{
+transform: translateY(53.81999999999999px);
+}
+
+54.17%{
+transform: translateY(51.48px);
+}
+
+56.25%{
+transform: translateY(49.14px);
+}
+
+58.33%{
+transform: translateY(46.8px);
+}
+
+60.42%{
+transform: translateY(44.459999999999994px);
+}
+
+62.50%{
+transform: translateY(42.12px);
+}
+
+64.58%{
+transform: translateY(39.78px);
+}
+
+66.67%{
+transform: translateY(37.44px);
+}
+
+68.75%{
+transform: translateY(35.099999999999994px);
+}
+
+70.83%{
+transform: translateY(32.76px);
+}
+
+72.92%{
+transform: translateY(30.419999999999998px);
+}
+
+75.00%{
+transform: translateY(28.08px);
+}
+
+77.08%{
+transform: translateY(25.74px);
+}
+
+79.17%{
+transform: translateY(23.4px);
+}
+
+81.25%{
+transform: translateY(21.06px);
+}
+
+83.33%{
+transform: translateY(18.72px);
+}
+
+85.42%{
+transform: translateY(16.38px);
+}
+
+87.50%{
+transform: translateY(14.04px);
+}
+
+89.58%{
+transform: translateY(11.7px);
+}
+
+91.67%{
+transform: translateY(9.36px);
+}
+
+93.75%{
+transform: translateY(7.02px);
+}
+
+95.83%{
+transform: translateY(4.68px);
+}
+
+97.92%{
+transform: translateY(2.34px);
+}
+
+100.00%{
+transform: translateY(0px);
+}
+
+}
+
+    </style>
+       
+
+        <ul id="ul">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+        </ul>
+       <p id="src">This is it</p>
+            <p id="result"></p>
+
+        <script>
+
+        let keys="";
+        let key_multiplier=0;
+         const animationFramai=(starting_point, increments, number_of_keys )=>{
+                let key_interval= 100 / number_of_keys;
+                  for(i=0; i<=number_of_keys; i++){
+                   
+                    keys+= "\n" + `
+                    ${(i*key_interval).toFixed(2)}%{<br>
+                        transform: translateY(${ i*key_interval === 0 ? starting_point : key_multiplier*increments}px);<br>
+                    }<br><br>
+                    `
+                    
+                  
+                    if(i < number_of_keys/2){
+                        key_multiplier++;
+                    }else{  
+                        key_multiplier--;
+                        if(key_multiplier < 0){
+                            key_multiplier=0;
+                        }
+                    }
+                   
+                  }//for loop end;
+                  
+         }//animationFramai end;
+
+         animationFramai(0,2.34,48);
+         console.log(`
+          @keyframes text-animation {
+          ${keys}
+          }
+          
+         `);
+         
+        let completedQuery =`
+          @keyframes text-animation {<br><br>
+          ${keys}
+          }
+          
+         `
+
+    document.getElementById('result').innerHTML = completedQuery;
+        </script>
+    </body>
+</html>
